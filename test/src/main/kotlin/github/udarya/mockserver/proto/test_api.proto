@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package github.udarya.mockserver;
+
+option java_outer_classname = "TestFxApiProto";
+option java_package = "github.udarya.mockserver";
+
+service TestFXAPI {
+  rpc GetRates (GetRatesRequest) returns (GetRatesResponse);
+}
+
+message GetRatesRequest {
+  string currency_from = 1;
+  string currency_to = 2;
+}
+
+message GetRatesResponse {
+  float rate = 1;
+}
