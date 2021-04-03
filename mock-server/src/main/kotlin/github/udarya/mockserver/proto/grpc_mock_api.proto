@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package github.udarya.mockserver;
+
+option java_outer_classname = "MockServerApiProto";
+option java_package = "github.udarya.mockserver";
+
+service MockServerAPI {
+  // Add mock request/response to the mock service.
+  rpc AddMockData(AddMockDataRequest) returns (AddMockDataResponse);
+}
+
+message AddMockDataRequest {
+  string service_name = 1;
+  string method_name = 2;
+  string request_json = 3;
+  string response_json = 4;
+}
+
+message AddMockDataResponse {
+
+}
