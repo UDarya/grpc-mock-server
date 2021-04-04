@@ -11,7 +11,6 @@ val protocVersion = "3.15.5"
 val kotestVersion = "4.4.3"
 
 plugins {
-    kotlin("jvm") version "1.3.71"
     id("com.google.protobuf") version "0.8.10"
 }
 

@@ -15,15 +15,7 @@ val grpcKotlinVersion = "0.1.5"
 val kotestVersion = "4.4.3"
 
 plugins {
-    kotlin("jvm") version "1.3.71"
     id("com.google.protobuf") version "0.8.10"
-}
-
-group = "github.udarya.mockserver"
-version = "1.0"
-
-repositories {
-    mavenCentral()
 }
 
 dependencies {
@@ -54,6 +46,8 @@ dependencies {
 
     testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
     testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
+
+    testImplementation("junit:junit:4.11")
 }
 
 sourceSets {
@@ -92,16 +86,5 @@ protobuf {
                 id("grpckt")
             }
         }
-    }
-}
-
-tasks {
-    withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java).all {
-        kotlinOptions {
-            jvmTarget = "11"
-        }
-    }
-    test {
-        useJUnitPlatform()
     }
 }
