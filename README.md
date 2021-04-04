@@ -2,9 +2,11 @@
 
 [![codecov](https://codecov.io/gh/UDarya/grpc-mock-server/branch/main/graph/badge.svg?token=H2S3WS2G6J)](https://codecov.io/gh/UDarya/grpc-mock-server)
 
-Generate mock services for given proto API and run grpc service with these services.
-Also provide API to mock `request/response` for grpc service. Mock data is stored in the `hashMap` 
-and available until restart of `mock-server` instance. Can be started in the separate container in the kubernetes for `dev` enviroment.
+
+## Features
+- Generate mock services for given proto API and run grpc service with these services
+- Provide API to mock `request/response` for grpc service. Mock data is stored in the `hashMap` and available until restart of `mock-server` instance.
+- Can be started in the separate container in the kubernetes for `dev` enviroment.
 
 ## Before running
 
