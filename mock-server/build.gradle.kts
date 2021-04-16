@@ -48,6 +48,9 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
 
     testImplementation("junit:junit:4.11")
+
+    implementation("org.skyscreamer:jsonassert:1.5.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.0.1")
 }
 
 sourceSets {

@@ -11,7 +11,7 @@ val protocVersion = "3.15.5"
 val kotestVersion = "4.4.3"
 
 plugins {
-    id("com.google.protobuf") version "0.8.10"
+    id("com.google.protobuf") version "0.8.15"
 }
 
 version = "unspecified"

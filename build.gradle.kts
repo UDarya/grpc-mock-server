@@ -19,10 +19,6 @@ val notToPublish = listOf("test")
 subprojects {
     apply(plugin = "kotlin")
 
-//    tasks.withType<KotlinCompile> {
-//        kotlinOptions.jvmTarget = "11"
-//    }
-
     val sourceSets = the<SourceSetContainer>()
 
     if (project.name !in notToPublish) {

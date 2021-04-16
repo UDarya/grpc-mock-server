@@ -1,5 +1,6 @@
 package github.udarya.mockserver
 
+import github.udarya.mockserver.intercept.CallSpyInterceptor
 import io.grpc.BindableService
 import io.grpc.Server
 import io.grpc.ServerBuilder
@@ -48,10 +49,11 @@ internal fun createGrpcServerForMockInstance(
 }
 
 private fun createGrpcServer(services: List<BindableService>, mockData: MockData, port: Int): Server {
+    val callSpy = CallSpy()
     val builder = ServerBuilder.forPort(port)
     services.forEach { service ->
-        builder.addService(service)
+        builder.addService(service).intercept(CallSpyInterceptor(callSpy))
     }
-    builder.addService(MockServerAPIImpl(mockData))
+    builder.addService(MockServerAPIImpl(mockData, callSpy))
     return builder.build()
 }
