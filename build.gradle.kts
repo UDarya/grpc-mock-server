@@ -7,7 +7,7 @@ plugins {
 allprojects {
     apply(plugin = "jacoco")
 
-    group = "github.udarya.mockserver"
+    group = "io.github.udarya"
     version = "0.1"
 
     repositories {
@@ -43,7 +43,7 @@ subprojects {
                         url.set("https://github.com/UDarya/grpc-mock-server")
 
                         organization {
-                            name.set("github.udarya")
+                            name.set("io.github.udarya")
                             url.set("https://github.com/udarya")
                         }
                         licenses {
@@ -54,8 +54,8 @@ subprojects {
                         }
                         scm {
                             url.set("https://github.com/UDarya/grpc-mock-server")
-                            connection.set("scm:git:git://github.com/UDarya/grpc-mock-server")
-                            developerConnection.set("scm:git:ssh://git@github.com:UDarya/grpc-mock-server.git")
+                            connection.set("scm:git:git://io.github.com/UDarya/grpc-mock-server")
+                            developerConnection.set("scm:git:ssh://git@io.github.com:UDarya/grpc-mock-server.git")
                         }
                         developers {
                             developer {

@@ -47,7 +47,7 @@ sourceSets {
         }
         proto {
             srcDir(
-                "src/main/kotlin/github/udarya/mockserver/proto"
+                "src/main/kotlin/io/github/udarya/mockserver/proto"
             )
         }
     }

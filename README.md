@@ -26,7 +26,7 @@ sourceSets {
         }
         proto {
             srcDir(
-                 "src/main/kotlin/github/udarya/mockserver/proto"
+                 "src/main/kotlin/io/github/udarya/mockserver/proto"
             )
         }
     }
@@ -58,7 +58,7 @@ protobuf {
 `grpc-mock-server` should be added to the project as gradle dependency:
 
 ```
-implementation("github.udarya.mockserver:grpc-mock-server:$version")
+implementation("io.github.udarya.mockserver:grpc-mock-server:$version")
 ```
 
 ## Running mocks
@@ -70,7 +70,7 @@ Example of using mock generator:
 fun main() {
     val service = generateAndRunGrpcMock(
         port,
-        MockStructure("github.udarya.mockserver.TestFXAPIGrpcKt", "TestFXAPI")
+        MockStructure("io.github.udarya.mockserver.TestFXAPIGrpcKt", "TestFXAPI")
     )
     service.awaitTermination()
 }
