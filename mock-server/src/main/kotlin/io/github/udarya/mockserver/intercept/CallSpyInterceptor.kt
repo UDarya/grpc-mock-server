@@ -8,7 +8,9 @@ import io.grpc.ServerCall
 import io.grpc.ServerCallHandler
 import io.grpc.ServerInterceptor
 
-
+/**
+ * Trace all mock-server calls.
+ * */
 class CallSpyInterceptor(val callSpy: CallSpy) : ServerInterceptor {
     override fun <ReqT : Any?, RespT : Any?> interceptCall(
         call: ServerCall<ReqT, RespT>,

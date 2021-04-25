@@ -84,4 +84,9 @@ tasks {
     test {
         useJUnitPlatform()
     }
+}.configureEach {
+    // remove this when duplicatesStrategy is implemented in protobuf-gradle-plugin
+    if (name == "extractIncludeTestProto" || name == "extractIncludeProto") {
+        enabled = false
+    }
 }

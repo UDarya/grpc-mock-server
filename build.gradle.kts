@@ -1,7 +1,9 @@
 plugins {
-    kotlin("jvm") version "1.4.20"
+    kotlin("jvm") version "1.4.0"
     jacoco
     `maven-publish`
+    signing
+    id("org.jetbrains.dokka") version ("1.4.20")
 }
 
 allprojects {
@@ -18,15 +20,24 @@ val notToPublish = listOf("test")
 
 subprojects {
     apply(plugin = "kotlin")
+    apply(plugin = "org.jetbrains.dokka")
+    apply(plugin = "maven-publish")
+    apply(plugin = "signing")
 
     val sourceSets = the<SourceSetContainer>()
 
     if (project.name !in notToPublish) {
         apply(plugin = "maven-publish")
+        apply(plugin = "signing")
 
         val sourcesJar = task<Jar>("sourcesJar") {
             from(sourceSets["main"].allSource)
             archiveClassifier.set("sources")
+        }
+
+        val dokkaJar = task<Jar>("dokkaJar") {
+            group = JavaBasePlugin.DOCUMENTATION_GROUP
+            archiveClassifier.set("javadoc")
         }
 
         publishing {
@@ -35,6 +46,7 @@ subprojects {
                     from(components["java"])
                     artifacts {
                         artifact(sourcesJar)
+                        artifact(dokkaJar)
                     }
 
                     pom {
@@ -68,23 +80,26 @@ subprojects {
                 repositories {
                     maven {
                         credentials {
-                            val nexusUsername: String? by project
-                            val nexusPassword: String? by project
+                            val nexusUsername: String by project
+                            val nexusPassword: String by project
                             username = nexusUsername
                             password = nexusPassword
                         }
 
-                        val releasesRepoUrl = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-                        val snapshotsRepoUrl = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+                        val releasesRepoUrl = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+                        val snapshotsRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
                         url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
                     }
                 }
             }
         }
+
+        signing {
+            sign(configurations.archives.name)
+        }
     }
 
 }
-
 
 tasks.withType<JacocoReport> {
     val containers = subprojects.map { it.the<SourceSetContainer>()["main"] }

@@ -6,8 +6,8 @@ import com.google.protobuf.gradle.protobuf
 import com.google.protobuf.gradle.protoc
 
 val junitVersion = "4.13.2"
-val protocVersion = "3.15.5"
-val protoBufVersion = "3.15.5"
+val protocVersion = "3.11.4"
+val protoBufVersion = "3.9.1"
 val kotlinScriptVersion = "1.4.21"
 val kotlinReflectVersion = "1.4.21"
 val grpcVersion = "1.28.1"
@@ -15,12 +15,12 @@ val grpcKotlinVersion = "0.1.5"
 val kotestVersion = "4.4.3"
 
 plugins {
-    id("com.google.protobuf") version "0.8.10"
+    id("com.google.protobuf") version "0.8.15"
 }
 
 dependencies {
     api("javax.annotation:javax.annotation-api:1.3.2")
-    api("io.grpc:grpc-kotlin-stub:1.0.0")
+    api("io.grpc:grpc-kotlin-stub:0.1.1")
     api("io.grpc:grpc-protobuf:$grpcVersion")
     api("io.grpc:grpc-stub:$grpcVersion")
 
