@@ -95,7 +95,7 @@ subprojects {
         }
 
         signing {
-            sign(configurations.archives.name)
+            sign(publishing.publications[project.name])
         }
     }
 

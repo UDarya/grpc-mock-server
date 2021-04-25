@@ -19,15 +19,16 @@ sourceSets {
     main {
         java {
             srcDirs(
-                "${protobuf.protobuf.generatedFilesBaseDir}/main/java",
-                "${protobuf.protobuf.generatedFilesBaseDir}/main/grpckt",
-                "${protobuf.protobuf.generatedFilesBaseDir}/main/grpc"
+                "${protobuf.protobuf.generatedFilesBaseDir}/main/java/io/github/udarya/mockserver",
+                "${protobuf.protobuf.generatedFilesBaseDir}/main/grpckt/io/github/udarya/mockserver",
+                "${protobuf.protobuf.generatedFilesBaseDir}/main/grpc/io/github/udarya/mockserver"
             )
         }
         proto {
-            srcDir(
-                 "src/main/kotlin/io/github/udarya/mockserver/proto"
-            )
+            dependencies {
+                protobuf("io.github.udarya:mock-server:0.1")
+            }
+            srcDir("grpc_mock_api.proto")
         }
     }
 }
